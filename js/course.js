@@ -53,7 +53,7 @@ $(document).ready(function() {
 
 	$("#btn-start").click(function() {
 		$('#iframe3')
-		$("#iframe3").attr('src','http://192.168.1.154:8080/guacamole/index.xhtml');
+		$("#iframe3").attr('src','http://localhost:8080/guacamole/index.xhtml');
 	});
 
 	$("#btn-back").click(function(){
