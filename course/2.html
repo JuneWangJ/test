@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../style/test1.css">
+	<link rel="stylesheet" type="text/css" href="../style/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="../style/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../style/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="container" style="background-color: #EEF">
+		<h2>基本概念及操作</h2>
+		<h2>一.Linux桌面环境介绍</h2>
+		<p>
+			相对于现在的Windows系统，UNIX/Linux本身是没有图形界面的，我们通常在Unix/Linux发行版上看到的图形界面实际都只是运行在Linux系统之上的一套软件，类似的Windows95之前的Windows的图形界面实则也只是运行在DOS环境的一套软件。而Linux上的这套软件以前就是XFree86，现在则是xorg(X.Org),而这套软件又是通过X窗口系统（X Window System，也常被称为X11或X）实现的，X本身只是工具包及架构协议，而xorg便是X架构规范的一个实现体，也就是说它是实现了X协议规范的一个提供图形用户界面服务的服务器，就像实现了http协议提供web服务的Apache。如果只有服务器也是不能实现一个完整的桌面环境的，当然还需要一个客户端，我们称为X Client，像如下几个大家熟知也最流行的实现了客户端功能的桌面环境<strong>KDE,GNOME,XFCE,LXDE</strong>,其中就有你看到的，实验楼目前使用的<strong>XFCE</strong>桌面环境，部分老用户可能可以回想起，实验楼之前使用的环境，也就是<strong>LXDEM</strong>。这也意味着在Linux上你可以自己选择安装不同的桌面环境，甚至可以定制自己的专属桌面。上面的一些东西你可能有点昏了哈，放张图理理
+		</p>
+		<img src="../img/logoblackfont-1.png" alt="" class="img-responsive center-block">
+		<p>
+			这里讲这么多，主要是为了帮助你更好理解Linux的桌面环境是一个怎样的概念，以及它跟Windows操作系统桌面的差异，实际它们之间是有着本质的差别的，希望清楚这些内容之后可以让你忽略那些体验上的差异，专心把精力放到Linux系统本身或者你正准备学习的某一门技术之上，这门实验课后面的内容和实验楼的其他课程便是为了帮助你实现以上两个目标的。
+		</p>
+
+		<h2>二.Linux桌面环境的使用</h2>
+		<p>
+			如果你对当前实验桌面环境(XFCE)的使用有任何困难，建议你先学习实验楼入门基础课程，对于其它桌面环境的使用，不在本课程的范围之类，有兴趣的用户可以在自己计算机中安装完整的Linux发行版或其Live CD体验。
+		</p>
+		<p class="text-center">
+			关于登录账户密码的说明, <strong>Linux环境中所有的默认系统用户名均为admin，密码为admin</strong>
+		</p>
+
+		<h2>三.linux终端</h2>
+		<h3>1.Terminal终端</h3>
+		<p>
+			通常在我们使用Linux时，我们并不是直接与系统打交道，而是通过一个叫做Shell的中间程序来完成的，在图形界面下为了实现让我们在一个窗口中完成接受用户输入和显示输出，Linux系统还提供了一个叫做终端模拟器的程序(Terminal)，下面几个比较常见的终端模拟器，例如gnome-terminal,kconsole,xterm,rxvt,kvt,nxterm和eterm,目前我们的实验中的终端程序是xfce桌面环境自带的xfce-terminal。不过要注意的是这里所说的终端(Terminal)和控制台(Console)是有区别的。
+		</p>
+		<img src="../img/logoblackfont-4.png" alt="" class="img-responsive center-block">
+		<p>
+			终端本质上是对应着Linux上的/dev/tty设备，linux的多用户登陆就是通过不同的/dev/tty设备完成的，Linux默认提供了6个纯命令行界面的"terminal"（准确的说这里应该是6个virtual consoles）来让用户登录，在物理机系统上你可以通过使用<code>Ctrl+Alt+F1～F6</code>进行切换，不过在我们的在线实验环境中可能无法切换，因为特殊功能按键会被你主机系统劫持。当你切换到其中一个终端后想要切换回图形界面，你可以按下<code>Ctrl+Alt+F7</code>来完成。
+		</p>
+		<h3>2.Shell</h3>
+		<p>
+			通常在图形界面中对实际体验带来差异的不是上述的不同发行版的各种终端模拟器，而大都是这个Shell(壳)，有壳就有核，这里的核就是指的UNIX/Linux内核，Shell是指“提供给使用者使用界面”的软件（命令解析器）,类似于DOS下的command(命令行)和后来的cmd.exe。普通意义上的Shell就是可以接受用户输入命令的程序。它之所以被称作shell是因为它隐藏了操作系统底层的细节。同样的Unix/Linux下的图形用户界面GNOME和KDE，有时也被叫做“虚拟shell”或“图形shell”。
+		</p>
+		<p>
+			Unix/Linux操作系统下的shell既是用户交互的界面，也是控制系统的脚本语言。当然在这点也有别于Windows下的命令行，虽然也提供了很简单的控制语句。在Windows操作系统下，可能有些用户从来都不会直接的使用shell，然而在Unix系列操作系统下，Shell仍然是控制系统启动、X11启动和很多其他实用工具的脚本解释程序。
+		</p>
+		<p>
+			在UNIX/Linux中比较流行的常见的Shell有bash,zsh,ksh,csh等等，Ubuntu终端默认使用的是bash，默认的桌面环境是GNOME或者Unity(基于GNOME)，但我们的环境中使用的分别是zsh和xfce。
+		</p>
+
+		<h3>3.命令行操作体验</h2>
+		<p>
+			说了那么多还是来体验一下Linux下的命令操作吧，首先双击桌面上的Xface终端图标，打开终端，打开终端后会自动运行shell程序，然后我们就可以输入命令让系统来执行了
+		</p>
+		<img src="../img/2-3.gif" alt="" class="img-responsive center-block">
+		<h4>1).重要快捷键：</h4>
+		<p>相信你以前或多或少接触过windows的命令行DOS，就我个人而言，使用DOS的简直感觉就是在虐待自己，然而自从我熟练了Linux的使用和命令行操作之后，那感觉一下上升了好几个层次，变成了一种享受。真正学习命令行之前，你先要掌握几个十分有用，必需掌握的小技巧</p>
+		<kbd>[Tab]</kbd>
+		<p>使用<code>Tab</code>键来进行命令补全，<code>Tab</code>键一般键盘是在字母<code>Q</code>旁边，这个技巧给你带来的最大的好处就是当你忘记某个命令的全称时你可以只输入它的开头的一部分然后按下<code>Tab</code>键就可以得到提示或者帮助完成。直接看演示吧：</p>
+		<img src="../img/2-4.gif" alt="" class="img-responsive center-block">
+		<p>当然不止补全命令，补全目录，补全命令参数都是没问题的</p>
+		<img src="../img/2-5.gif" alt="" class="img-responsive center-block">
+		<kbd>[Ctrl+c]</kbd>
+		<p>想想你有没有遇到这种情况，当你在Linux命令行中无意输入了一个不知道的命令，或者错误的使用了一个命令，导致在终端里出现了你无法预料的情况，比如，只有光标在闪烁无法继续输入命令，或者不停地在输出一大堆你不想要的结果。你想要立即停止并恢复到你可控的状态，那该怎么办呢。这时候你就可以使用<code>Ctrl+c</code>键来强行终止当前程序（你可以放心它并不会使终端退出）</p>
+		<p>这里你可以先输入几个命令感受下：</p>
+		<pre><kbd>$ tail</kbd></pre>
+		<p>然后你会发现你接下来的输入都没有任何反应了，只是将你输入的东西显示出来，现在你可以使用<code>Ctrl+c</code>，来中断这个你目前可能还不知道是什么的程序了。（在后续课程中我们会具体解释这个<code>tail</code>命令是什么）</p>
+		<p>又或者，你不小心输入了</p>
+		<pre><kbd>$ find /</kbd></pre>
+		<img src="../img/2-6.gif" alt="" class="img-responsive center-block">
+		<p>显然这不是你想“find”的结果，果断Ctrl+c吧</p>
+		<p>虽然这个按着很爽，你一不要随便按哦，因为有时候当你看到终端没有任何反应或提示，也不能接受你的输入，可能只是运行的程序需要你耐心的等一下，你就不要急着<code>Ctrl+c</code>了</p>
+		<p>其他一些常用快捷键</p>
+		<dl class="dl-horizontal">
+  			<dt><strong>按键</strong></dt>
+  			<dd><strong>作用</strong></dd>
+  			<dt><code>Ctrl+d</code></dt>
+  			<dd>键盘输入结束或退出终端</dd>
+  			<dt><code>Ctrl+s</code></dt>
+  			<dd>暂定当前程序，暂停后按下任意键恢复运行</dd>
+  			<dt><code>Ctrl+z</code></dt>
+  			<dd>将当前程序放到后台运行，恢复到前台为命令<code>fg</code></dd>
+  			<dt><code>Ctrl+a</code></dt>
+  			<dd>将光标移至输入行头，相当于<code>Home</code>键</dd>
+  			<dt><code>Ctrl+e</code></dt>
+  			<dd>将光标移至输入行末，相当于<code>End</code>键</dd>
+  			<dt><code>Ctrl+k</code></dt>
+  			<dd>删除从光标所在位置到行末</dd>
+  			<dt><code>Alt+Backspace</code></dt>
+  			<dd>向前删除一个单词</dd>
+  			<dt><code>Shift+PgUp</code></dt>
+  			<dd>将终端显示向上滚动</dd>
+  			<dt><code>Shift+PgDn</code></dt>
+  			<dd>将终端显示向下滚动</dd>
+		</dl>
+		<h4>2).学会利用历史输入命令</h3>
+		<p>很简单，你可以使用键盘上的方向上键，恢复你之前输入过的命令，你一试便知，真是爽啊</p>
+		<h4>3).学会使用通配符</h4>
+		<p>通配符是一种特殊语句，主要有星号(*)和问号(?)，用来对对字符串进行模糊匹配(比如文件名，参数名)。当查找文件夹时，可以使用它来代替一个或多个真正字符；当不知道真正字符或者懒得输入完整名字时，常常使用通配符代替一个或多个真正的字符。</p>
+		<p>终端里面输入的通配符是由shell处理的，不是由所涉及到命令语句处理的，它只会出现在命令的“参数值”里（它不用在 命令名称里， 命令不记得，那就用<code>Tab</code>补全）。当shell在“参数值”中遇到了通配符时，shell会将其当作路径或文件名去在磁盘上搜寻可能的匹配：若符合要求的匹配存在，则进行代换(路径扩展)；否则就将该通配符作为一个普通字符传递给“命令”，然后再由命令进行处理。总之，通配符 实际上就是一种shell实现的路径扩展功能。在 通配符被处理后, shell会先完成该命令的重组，然后再继续处理重组后的命令，直至执行该命令。</p>
+		<p>说了这么多，感觉来感受下吧</p>
+		<p>先使用touch命令创建2个文件，后缀都为txt</p>
+		<pre><kbd>$ touch adsfasd.txt wergjlkas.txt</kbd></pre>
+		<p>文件名有点怪？我是故意的，意思是你可以随便输入什么文件名。然后意外发生了，过了很长时间，你已经忘了这两个文件的文件名，现在你想在你大堆其他文件中找到这两个文本文件怎么办呢，这时候你就可以使用通配符了</p>
+		<pre><kbd>$ ls *.txt</kbd></pre>
+		<img src="../img/logoblackfont-5.png" alt="" class="img-responsive center-block">
+		<p>就这哦，没啥了不起嘛，不慌，还有更厉害的，如果在windows中要你一次性创建一些这样的文件你该怎么做，“<strong>love_1_linux.txt, love_2_linux.txt,... love_10_linux.txt</strong>”,不知道咋办了吧。不过这对linux来说也是小意思</p>
+		<pre><kbd>$ touch love_{1..10}_linux.txt</kbd></pre>
+		<img src="../img/logoblackfont-6.png" alt="" class="img-responsive center-block">
+		<p>shell常用通配符：</p>
+		<dl class="dl-horizontal">
+  			<dt><strong>字符</strong></dt>
+  			<dd><strong>含义</strong></dd>
+  			<dt><code>*</code></dt>
+  			<dd>匹配 0 或多个字符</dd>
+  			<dt><code>?</code></dt>
+  			<dd>匹配任意一个字符</dd>
+  			<dt><code>[list]</code></dt>
+  			<dd>匹配 list 中的任意单一字符<dd>
+  			<dt><code>[!list]</code></dt>
+  			<dd>匹配 除list 中的任意单一字符以外的字符</dd>
+  			<dt><code>[c1-c2]</code></dt>
+  			<dd>匹配 c1-c2 中的任意单一字符 如：[0-9] [a-z]</dd>
+  			<dt><code>C{string1,string2,...}</code></dt>
+  			<dd>匹配 sring1 或 string2 (或更多)其一字符串</dd>
+  			<dt><code>{c2..c2}</code></dt>
+  			<dd>匹配 c1-c2 中全部字符 如{1..10}</dd>
+		</dl>
+		<h4>4).学会在命令行中获取帮助</h4>
+		<p>设想一下，假如你是一个娇小柔弱的妹子，当你遇到体力活时，你会怎么办呢，哈哈，不用多想肯定是找<code>man</code>(男人)来帮忙。 没错，我们在linux环境中，如果你遇到困难的话，无论男女，是否娇弱，你都可以找man(男人)来帮忙，不过要明白它不是真的<code>man</code>，只是<code>Manual page</code>的缩写。</p>
+		<p>Manual pages是在Unix或类Unix操作系统在线软件文档的一种普遍的形式。 内容包括计算机程序（包括库和系统调用），正式的标准和惯例，甚至是抽象的概念。用户可以通过执行man命令调用手册页。</p>
+		<p>你可以使用如下方式来获得某个命令的说明和使用方式的详细介绍</p>
+		<pre><kbd>$ man <command_name></kbd></pre>
+		<p>比如你想查看man命令本身的使用方式，你可以输入</p>
+		<pre><kbd>man man</kbd></pre>
+		<p>通常情况下，man手册里面的内容都是英文的，这就要求你有一定的英文基础。man手册的内容很多，涉及了linux使用过程中的方方面面，为了便于查找，是做了分册（分区段）处理的，在Research Unix、BSD、OS X和Linux中，手册通常被分为8个区段，安排如下：</p>
+		<dl class="dl-horizontal">
+			<dt>区段</dt>
+			<dd>说明</dd>
+			<dt>1</dt>
+			<dd>一般命令</dd>
+			<dt>2</dt>
+			<dd>系统调用</dd>
+			<dt>3</dt>
+			<dd>库函数，涵盖了C标准函数库</dd>
+			<dt>4</dt>
+			<dd>特殊文件（通常是/dev中的设备）和驱动程序</dd>
+			<dt>5</dt>
+			<dd>文件格式和约定</dd>
+			<dt>6</dt>
+			<dd>游戏和屏保</dd>
+			<dt>7</dt>
+			<dd>杂项</dd>
+			<dt>8</dt>
+			<dd>系统管理命令和守护进程</dd>
+		</dl>
+		<p>要查看相应区段的内容，就在man后面加上相应区段的数字即可，如：</p>
+		<pre><kbd>$ man 3 printf</kbd></pre>
+		<p>所有的手册页遵循一个常见的布局，其为通过简单的ASCII文本展示而优化，而这种情况下可能没有任何形式的高亮或字体控制。一般包括以下部分内容：</p>
+		<span><strong>NAME（名称）</strong></span>
+		<p>该命令或函数的名称，接着是一行简介。</p>
+		<span><strong>SYNOPSIS（概要）</strong></span>
+		<p>对于命令，正式的描述它如何运行，以及需要什么样的命令行参数。对于函数，介绍函数所需的参数，以及哪个头文件包含该函数的定义。</p>
+		<span><strong>DESCRIPTION（说明）</strong></span>
+		<p>命令或函数功能的文本描述。</p>
+		<span><strong>EXAMPLES（示例）</strong></span>
+		<p>常用的一些示例。</p>
+		<span><strong>SEE ALSO（参见）</strong></span>
+		<p>相关命令或函数的列表。</p>
+		<p>也可能存在其他部分内容，但这些部分没有得到跨手册页的标准化。常见的例子包括：OPTIONS（选项），EXIT STATUS（退出状态），ENVIRONMENT（环境），BUGS（程序漏洞），FILES（文件），AUTHOR（作者），REPORTING BUGS（已知漏洞），HISTORY（历史）和COPYRIGHT（版权）。</p>
+		<p>通常man手册中的内容很多，你可能不太容易找到你想要的结果，不过幸运的是你可以在man中使用搜索，<code>/<你要搜索的关键字></code>，查找到后你可以使用n键切换到下一个关键字所在处，<code>shift+n</code>为上一个关键字所在处。使用<code>Space</code>(空格键)翻页，<code>Enter</code>(回车键)向下滚动一行，或者使用<code>j</code>,<code>k</code>（vim编辑器的移动键）进行向前向后滚动一行。按下<coed>h</coed>键为显示使用帮助(因为man使用less作为阅读器，实为<code>less</code>工具的帮助)，按下<code>q</code>退出</p>
+		<p>想要获得更详细的帮助，你还可以使用<code>info</code>命令，不过通常使用<code>man</code>就足够了。如果你知道某个命令的作用，只是想快速查看一些它的某个具体参数的作用，那么你可以使用<code>--help</code>参数，大部分命令都会带有这个参数，如</p>
+		<pre><kbd>$ ls --help</kbd></pre>
+		
+	</div>
+</body>
+</html>

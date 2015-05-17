@@ -1,0 +1,23 @@
+div.intro{
+	background-color: #efe;
+	height: 300px;
+	padding: 0px;
+}
+
+div.intro:hover{
+	box-shadow: 2px 2px 4px #999;
+	cursor: pointer;
+}
+
+div.intro div.title{
+	width: 100%;
+	background-color: #5cb85c;
+	height: 50px;
+}
+
+div.intro div.title h3{
+	text-align: center;
+	color: #FFF;
+	line-height: 50px;
+	margin: 0 auto;
+}

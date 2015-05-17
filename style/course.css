@@ -1,0 +1,26 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+a{
+	cursor: pointer;
+}
+
+/*左侧iframe*/
+div.left{
+	width: 34%;
+	height: 100%;
+	float: left;
+	border: 0px;
+	border-right: 5px solid #eee;
+}
+
+/*右侧iframe*/
+div.right{
+	padding-left: 5px;
+	width:65%;
+	height: 100%;
+	float: left;
+	border: 0px;
+}
