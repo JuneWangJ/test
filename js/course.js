@@ -52,8 +52,9 @@ $(document).ready(function() {
 	});
 
 	$("#btn-start").click(function() {
-		$('#iframe3')
-		$("#iframe3").attr('src','http://localhost:8080/guacamole/index.xhtml');
+		$('#iframe3');
+		var url = window.location.href;
+		$("#iframe3").attr('src',"http://"+url.split("/")[2]+":6080/vnc_auto.html");
 	});
 
 	$("#btn-back").click(function(){
