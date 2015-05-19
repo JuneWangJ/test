@@ -54,7 +54,7 @@ $(document).ready(function() {
 	$("#btn-start").click(function() {
 		$('#iframe3');
 		var url = window.location.href;
-		$("#iframe3").attr('src',"http://"+url.split("/")[2]+":6080/vnc.html");
+		$("#iframe3").attr('src',"http://"+url.split("/")[2]+":4200");
 	});
 
 	$("#btn-back").click(function(){
