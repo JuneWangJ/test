@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>  
+<head>   
+ <meta charset="utf-8">    
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style/bootstrap.min.css">
+  <link rel="stylesheet" href="./style/bootstrap-theme.min.css">
+  <script src="./js/bootstrap.min.js"></script>  
+  <form class="form-horizontal" action="teacher/login_do.php" method="get">    
+  <fieldset>      
+      <div id="legend" class="" align="center">        
+          <legend class="text-center">用户登录</legend>      
+      </div>    
+      <div class="control-group text-center" align="center">          <!-- Text input-->
+        <ul>
+           <span class="glyphicon glyphicon-user"></span>          
+           <label class="control-label" for="input01">用户名：</label>           
+           <input type="text" placeholder="employeeid" class="input-xlarge" name="name">
+        </ul>        
+      </div>        
+      <div class="control-group text-center"  align="center">          <!-- Text input--> 
+        <ul>          
+            <span class="glyphicon glyphicon-lock"></span>          
+            <label class="control-label" for="input01">密码：</label>           
+            <input type="password" placeholder="password" class="input-xlarge" name="passwd">
+        </ul>        
+      </div>       
+      <div class="control-group text-center" align="center">          <!-- Button --> 
+        <ul>            
+            <button class="btn btn-link" type="submit" >登录</button>            
+            <button class="btn btn-link" type="button">忘记密码</button>           
+        </ul>         
+      </div>    
+   </fieldset>  
+   </form>
+
+</html>
