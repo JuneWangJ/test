@@ -5,6 +5,12 @@ $(document).ready(function() {
 					{"question":"列出包括以“．”查看主机PCI设备信息的命令（ ）。","answer":{"A":"ext2","B":"ext3 ","C":"vfat","D":"iso9660"},"correct":"D"},
 					{"question":"为了查找出当前用户运行的所有进程的信息，我们可以用（   ）命令。","answer":{"A":"ps  -a ","B":"ps  -u","C":"ls -l","D":"cron"},"correct":"A"},
 					{"question":"我们一般使用(   )工具来建立分区上的文件系统。","answer":{"A":"mknod ","B":"fdisk","C":"format ","D":"mkfs"},"correct":"D"},
+					{"question":"linux系统的运行级别中，哪个是作为保留级别没有定义的","answer":{"A":"2","B":"3","C":"4","D":"5"},"correct":"C"},
+					{"question":"以下哪个参数不用于卸载rpm软件包（  ）。","answer":{"A":"--nodeps","B":"--justdb","C":"--force","D":"--test"},"correct":"C"},
+					{"question":"列出包括以“．”开始的隐藏文件在内的所有文件名的命令是（  ）。","answer":{"A":"ls","B":"ls -a","C":"ls -l","D":"ls /"},"correct":"D"},
+					{"question":"列出包括以“．”查看主机PCI设备信息的命令（ ）。","answer":{"A":"ext2","B":"ext3 ","C":"vfat","D":"iso9660"},"correct":"D"},
+					{"question":"为了查找出当前用户运行的所有进程的信息，我们可以用（   ）命令。","answer":{"A":"ps  -a ","B":"ps  -u","C":"ls -l","D":"cron"},"correct":"A"},
+					{"question":"我们一般使用(   )工具来建立分区上的文件系统。","answer":{"A":"mknod ","B":"fdisk","C":"format ","D":"mkfs"},"correct":"D"},
 					{"question":"linux系统的运行级别中，哪个是作为保留级别没有定义的","answer":{"A":"2","B":"3","C":"4","D":"5"},"correct":"C"}
 				]};
 	count(data);

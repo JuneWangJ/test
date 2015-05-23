@@ -24,9 +24,9 @@ $(document).ready(function() {
 		$("#iframe1").attr('src',"./course/"+index+".html");
 	});
 
-	$("#iframe2_1").hide();
-	$("#iframe2_2").hide();
-	$("#iframe2_3").hide();
+	// $("#iframe2_1").hide();
+	// $("#iframe2_2").hide();
+	// $("#iframe2_3").hide();
 
 	$("#btn-note").click(function() {
 		$("#iframe2_1").slideToggle();
